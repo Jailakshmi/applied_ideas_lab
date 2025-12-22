@@ -1,7 +1,7 @@
 # Reconstructing Work Is a Cognitive Tax
 
 ## 1. Observation
-At the end of the week, many people(employees) are required to fill timesheets or activity reports.
+At the end of the week, many people are required to fill timesheets or activity reports.
 This usually involves trying to remember what was worked on across several days.
 
 I personally struggle here and often end up writing a single high-level line to describe the entire week.
@@ -19,18 +19,18 @@ Reconstructing work from memory is:
 People don’t struggle because they didn’t work.
 They struggle because memory was never designed to log work in this way.
 
-## 3. The Core Friction
-Most productivity tools focus on capturing:
-- time
-- applications
-- tasks
+## 3. What’s Actually Hard Here
+During the week, people are usually fully absorbed in their actual work.
 
-But timesheets usually ask for:
-- outcomes
-- intent
-- categories of work
+To fill timesheets accurately, one of two things has to happen:
+- work must be documented in parallel, or
+- work must be reconstructed later from memory
 
-This creates a mismatch between what is recorded and what is later required.
+Parallel documentation is often unrealistic, especially when the work itself demands high cognitive effort.
+
+Reconstructing work later shifts that cognitive load to a different time, but does not remove it.
+In both cases, the cost is paid — either during the work or after it.
+
 
 ## 4. Direction of Thought
 What if, instead of manually reconstructing a week of work, a person could click a single “summarize” button?
@@ -40,25 +40,24 @@ Such a system might:
 - group related work
 - infer what was likely being worked on
 - produce a human-readable summary
-
-The goal would not be to replace judgment,
-but to remove the blank-page problem that happens at the end of the week.
+- 
 
 ## 5. Thinking About a Possible System
-There are already tools that passively track activity in the background (for example, application usage and time spent).
 
-If this activity data were paired with an AI layer, the problem could shift from *remembering work* to *interpreting recorded signals*.
+This is intentionally high-level and exploratory.
+The details would need to be reasoned about carefully over time.
+
+There are already tools that passively track activity in the background (for example, Umbrella).
+
+If this activity data were paired with an AI layer, the problem could shift from *recalling the week's work* to just *clicking a button*.
 
 At a high level:
 - the activity tracker provides raw signals of what happened
 - the AI layer focuses on organizing and summarizing those signals into a usable narrative
 
-This is intentionally high-level and exploratory.
-The details would need to be reasoned about carefully.
 
 ## 6. Constraints & Open Questions
 - How accurate does such a summary need to be to be useful?
 - Is partial correctness better than manual recall?
-- How much inference is acceptable without explicit user input?
-- How should uncertainty be communicated to the user?
+- Should that tool be default summarizer or have a customizable prompt option from the beginning itself?
 
