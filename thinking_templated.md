@@ -4,7 +4,7 @@
 ## Observation
 What did I notice in real life?
 What felt off, annoying, or inefficient?
-Personal experience is welcome here.
+Personal experience if applies.
 
 ## Why This Matters
 Why this isn’t just a small inconvenience.
