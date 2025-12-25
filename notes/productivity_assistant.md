@@ -55,6 +55,53 @@ At a high level:
 - the activity tracker provides raw signals of what happened
 - the AI layer focuses on organizing and summarizing those signals into a usable narrative
 
+I started with the idea of adding an AI layer on top of an activity tracker, so I first looked for something simple and free. I chose Clockify because it had an API and looked easy to integrate. I set up the API, authenticated successfully, and verified that my code could fetch user data.
+
+But the moment I actually used it, I realized the problem. Clockify only tracks time if I manually start a timer or enter work details. That completely breaks the point of an AI layer. If I have to tell the system what I did, the AI isn’t intelligent — it’s just rewriting my input. So I dropped Clockify immediately.
+
+I then made the requirement clear again: the tracker must be fully automatic and passive. That led me to ActivityWatch. I installed it, but initially the dashboard showed no data. I figured out that ActivityWatch separates the dashboard from the actual watchers, so nothing is tracked unless the window and AFK watchers are running.
+
+I started the watchers properly, cleaned up duplicate instances, and confirmed the server was receiving data. Once that was fixed, the dashboard began filling automatically.
+
+<img width="544" height="762" alt="image" src="https://github.com/user-attachments/assets/cd133b1a-7ce8-4e99-b8b9-b29819db48c6" />
+
+
+Finally, I connected to ActivityWatch’s local API and pulled real window-level activity data in Python — app names, window titles, timestamps, and durations — without any manual input.
+
+At that point, I knew the foundation was right. Now the AI layer can interpret behavior instead of relying on self-reported data. Below is for the output I got after running it succesfully:
+
+[
+  {
+    "id": 324,
+    "timestamp": "2025-12-25T14:13:44.481000+00:00",
+    "duration": 6.081,
+    "data": {
+      "app": "Code.exe",
+      "title": "api_reader.py - ai_time_tacker - Visual Studio Code"
+    }
+  },
+  {
+    "id": 322,
+    "timestamp": "2025-12-25T14:13:12.172000+00:00",
+    "duration": 26.231,
+    "data": {
+      "app": "firefox.exe",
+      "title": "AI Extension for Activity Tracking — Mozilla Firefox"
+    }
+  },
+  {
+    "id": 316,
+    "timestamp": "2025-12-25T14:12:32.703000+00:00",
+    "duration": 0.0,
+    "data": {
+      "app": "explorer.exe",
+      "title": ""
+    }
+  }
+]
+
+Now that I can get this response, now I can easily use any LLM, to summarize this beautifully with an efficient prompt.
+
 
 ## 6. Constraints & Open Questions
 - How accurate does such a summary need to be to be useful?
