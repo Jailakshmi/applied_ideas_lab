@@ -1,4 +1,4 @@
-# Reconstructing Work Is a Cognitive Tax
+<img width="1369" height="853" alt="image" src="https://github.com/user-attachments/assets/9f4f31bc-57f5-4481-9af4-84e21fea05d5" /># Reconstructing Work Is a Cognitive Tax
 
 ## 1. Observation
 At the end of the week, many people are required to fill timesheets or activity reports.
@@ -100,8 +100,54 @@ At that point, I knew the foundation was right. Now the AI layer can interpret b
   }
 ]
 
-Now that I can get this response, now I can easily use any LLM, to summarize this beautifully with an efficient prompt.
+Now that I can get this response, I can easily use any LLM, to summarize this beautifully with an efficient prompt.
 
+As a next step, I need an opensource api for an llm, I researched and found the following that closely aligns with my requirements
+1. OpenRouter (unified API) — connects you to many LLMs (Anthropic, DeepSeek R1, Toppy, Zephyr etc.) with a free quota of requests per day.
+2. Groq API — offers a freemium LLM inference API focused on fast performance.
+
+
+Since I was using the free tier, both has its own limitations, based on the model I choose.
+
+After several trial and errors, I chose this model,
+mistralai/devstral-2512:free - the one from OpenRouter.
+
+The main reason I chose this model is as follows
+- My use case has to handle a large context, the context is literally my work activities in json, which includes all the details right from the application name, duration spent, the title on which I was working etc, the example of such a json was shown above. For this, the token limit has to be high and the speed must also be relatively high, which led me to mistral eventually.
+
+And I personally found OpenRouter cool and super sorted, because from a single api, I could just switch to different models, just by changing the model name.
+
+Below image shows the api that I created and used from the OpenRouter
+
+<img width="1848" height="766" alt="image" src="https://github.com/user-attachments/assets/c01d0af3-0aa4-4485-ab6a-2de54bfa0b2e" />
+
+The backend was done using python FastAPI, and frontend was Javascript, HTML and CSS.
+
+Coming to the lowkey main part- prompt engineering
+
+The prompt I gave sticks to this template :
+- Firstly adressing its sole purpose in a single line.
+- Context in a single line adressing what is basically happening here.
+- Tasks in bullet points (Majorly the Do's)
+- Rules in bullet points (Majorly the Dont's)
+- Output format - providing an example
+- The main context from which the model is going to perform the task - in this case json data showing the tracked activities which I get from ActivityWatch
+
+
+A very basic additional feature apart from the main use case, I had thought about was to be able to download the generated time sheet as a pdf.
+
+Below given shows the UI page of the application.
+
+<img width="1369" height="853" alt="image" src="https://github.com/user-attachments/assets/80523f37-b3ee-4a86-8777-4fcc2563a6c5" />
+
+What made this interesting to me was not just correctness, but the trust — I could see the model literally summarizing the activities I remember doing, without me telling it anything explicitly.
+
+Since I paired it up with an actual real time activity tracker, personally I can even use this in my daily life.
+
+This application is designed from the intention of a personal recall tool — the data is generated, summarized, and consumed by the same user, purely to reduce the friction of filling timesheets.
+It is still early and rough around the edges — especially around context size, model limits, and formatting — but the core idealogy already feels usable.
+
+With this I would like to end the though thread.
 
 ## 6. Constraints & Open Questions
 - How accurate does such a summary need to be to be useful?
