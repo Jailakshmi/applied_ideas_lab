@@ -1,4 +1,4 @@
-<img width="1369" height="853" alt="image" src="https://github.com/user-attachments/assets/9f4f31bc-57f5-4481-9af4-84e21fea05d5" /># Reconstructing Work Is a Cognitive Tax
+# Reconstructing Work Is a Cognitive Tax
 
 ## 1. Observation
 At the end of the week, many people are required to fill timesheets or activity reports.
