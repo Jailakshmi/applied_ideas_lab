@@ -100,6 +100,195 @@ I’ll continue this thread with how I took this further, what worked, what brok
 
 ---
 
+# Part 2 — When My First Assumption Broke
+
+---
+
+## Where My Thinking Initially Went
+
+At the end of my first exploration, my thinking felt straightforward.
+
+If I could extract structure from a codebase into JSON, then maybe the next step was obvious:
+
+> Give that structure to an LLM.
+> Ask it to generate Mermaid code.
+> Render the diagram.
+
+On paper, it sounded reasonable.
+
+The problem involved understanding architecture.
+AI generates structured output.
+Mermaid renders diagrams.
+
+So naturally, I assumed AI sat in the middle of this pipeline.
+
+At that point, the question in my head was not:
+
+> “Do I need AI?”
+
+It was:
+
+> “How should AI be used?”
+
+---
+
+## The Friction Started Showing
+
+But once I started thinking more carefully about the problem, something felt off.
+
+I stepped back and asked:
+
+> What am I actually trying to solve?
+
+The goal was never:
+
+**Generate a diagram.**
+
+The real goal was:
+
+**Help someone understand a codebase quickly and accurately.**
+
+That distinction changed everything.
+
+Because the moment accuracy becomes important, the problem shifts.
+
+An architecture visual is only useful if it reflects reality.
+
+And that raised a difficult question:
+
+If the structure already exists inside the codebase itself…
+why am I asking another system to *guess* it?
+
+That question stayed with me.
+
+---
+
+## Realizing I Was Solving the Wrong Problem
+
+I noticed something interesting in my own thinking.
+
+I had quietly equated:
+
+> Visualization problem = AI problem
+
+But the deeper I looked, the less true that felt.
+
+The structure already exists.
+
+Imports already exist.
+Dependencies already exist.
+Relationships already exist.
+
+The missing piece was not intelligence.
+
+It was extraction and representation.
+
+That realization simplified the whole direction.
+
+Instead of asking:
+
+> How do I make AI generate architecture?
+
+The question became:
+
+> How do I directly read architecture from the code itself?
+
+That shift felt surprisingly important.
+
+---
+
+## Moving Toward Grounded Structure
+
+Once I stopped forcing AI into the solution, the path became clearer.
+
+Rather than generating visuals from interpretation, I explored extracting relationships directly from the source.
+
+The codebase already contains signals:
+
+* Files
+* Modules
+* Imports
+* Internal dependencies
+* Structural boundaries
+
+Those relationships can be parsed.
+
+So instead of diagram generation first, I started with:
+
+> What can the code tell me about itself?
+
+That led me into AST parsing and dependency extraction.
+
+The system began reading imports directly from uploaded projects and building a real dependency graph from them.
+
+Not imagined structure.
+
+Not interpreted architecture.
+
+Actual structural relationships.
+
+And once that graph existed, visualizing it became dramatically simpler.
+
+---
+
+## Something Unexpected Happened
+
+I originally thought I needed a generated block diagram.
+
+But the more I built, the less I wanted a static image.
+
+Because static diagrams answer only one question:
+
+> “What does this look like?”
+
+But codebases are explored progressively.
+
+We don’t understand systems all at once.
+
+We expand.
+
+We follow paths.
+
+We inspect relationships.
+
+So the direction evolved again.
+
+Instead of generating a finished picture, I built a progressive explorer — where structure expands through real dependencies and the architecture reveals itself gradually.
+
+Unexpectedly, this felt better than the original idea.
+
+More accurate.
+
+More controllable.
+
+And more aligned with how engineers actually understand systems.
+
+---
+
+## What This Taught Me
+
+This small project taught me something I didn’t expect.
+
+Sometimes we assume a problem needs sophistication before we fully understand the problem itself.
+
+And in that process, we over-design solutions.
+
+I went in assuming AI would be essential.
+
+But the deeper lesson was almost the opposite.
+
+Sometimes the simplest path is not the shortcut.
+
+It is the more grounded solution.
+
+Not every interesting problem needs an intelligent layer.
+
+Sometimes clarity comes from reducing assumptions rather than adding complexity.
+
+And that has probably become my favorite takeaway from this exploration.
+
+---
+
 ## Constraints & Open Questions
 
 Some of the questions I’m sitting with right now:
